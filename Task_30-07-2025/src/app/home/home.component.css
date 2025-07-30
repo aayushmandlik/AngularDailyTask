@@ -1,0 +1,29 @@
+.login-container{
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    min-height: 100vh;
+    margin-top: 100px;
+}
+.login-card{
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+mat-card-subtitle{
+    margin-bottom: 20px;
+}
+.add-text{
+    text-align: center;
+    margin-top: 20px;
+}
+.addbtn{
+    display: flex;
+    left: 46%;
+    margin-top: 10px;
+}
