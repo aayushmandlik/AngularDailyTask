@@ -43,9 +43,9 @@
   </div>
 
   <div class="add-text">Click to view Product List</div>
-  <button mat-raised-button color="primary" class="addbtn" style="margin-bottom: 20px;" (click)="onclickl()">List</button>
+  <button mat-raised-button color="primary" class="addbtn" style="margin-bottom: 20px;" (click)="onclicklist()">List</button>
   <div style="padding-bottom: 80px;"></div>
-  <div [hidden]="displayl" style="padding-bottom: 50px;">
+  <div [hidden]="displaylist" style="padding-bottom: 50px;">
     <input type="text" placeholder="Search by product name" [(ngModel)]="search" style="width: 300px; height: 30px; margin-left: 600px; margin-bottom: 20px;"><span *ngIf="search.length>0">Searching for {{search}}</span>
     <table mat-table [dataSource]="productList" class="mat-elevation-z8" style="width: 80%; margin-bottom: 100px;">
       <ng-container matColumnDef="pName">
@@ -55,7 +55,7 @@
 
       <ng-container matColumnDef="pImage">
         <th mat-header-cell *matHeaderCellDef>Product Image</th>
-        <td mat-cell *matCellDef="let element"><img [src]="element.pImage" alt="" style="width: 20px; height: 20px;"></td>
+        <td mat-cell *matCellDef="let element"><img [src]="element.pImage" alt="" style="width: 50px; height: 50px;"></td>
       </ng-container>
 
       <ng-container matColumnDef="pQuantity">

@@ -1,0 +1,7 @@
+<mat-card class="recipe-card" style="margin-bottom: 30px;">
+    <img mat-card-image [src]="recipe.image" alt="" style="width: 300px; height: 300px;">
+    <mat-card-title>Dish: {{recipe.title}}</mat-card-title>
+    <mat-card-title>Category: {{recipe.category}}</mat-card-title>
+    <button mat-button color="accent" (click)="openInstructions()">View Instructions</button>
+    <button mat-button color="warn" (click)="onDelete()">Delete</button>
+</mat-card>

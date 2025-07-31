@@ -1,0 +1,8 @@
+<mat-toolbar color="primary" style="border-radius: 20px;">Recipe Book</mat-toolbar>
+<app-recipe-form (recipeAdded)="addRecipe($event)"  style="margin-top: 20px;"></app-recipe-form>
+<input type="text" placeholder="search" [(ngModel)]="search" (input)="onSearch($event)" style="margin-top: 50px; width: full; margin-left: 600px; padding: 10px;">
+<div style="margin-left: 600px;" *ngIf="search.length>0">Searching For {{search}}</div>
+<div class="recipe-container">
+    <app-recipe-card *ngFor="let recipe of filter" [recipe]="recipe" (delete)="deleteRecipe($event)">
+    </app-recipe-card>
+</div>

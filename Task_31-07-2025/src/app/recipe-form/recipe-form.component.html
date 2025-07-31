@@ -1,0 +1,23 @@
+<div style="justify-items: center; margin-top: 50px;">
+    <mat-card style="width: 500px; padding: 20px;">
+        <mat-card-title>Enter Recipe</mat-card-title>
+        <mat-form-field>
+            <mat-label>Enter Recipe Name:</mat-label>
+            <input matInput placeholder="Eg.Noodles" [(ngModel)]="title">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter Category of recipe:</mat-label>
+            <input matInput placeholder="Eg.Italian" [(ngModel)]="category">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter Recipe Dish Image:</mat-label>
+            <input matInput placeholder="Eg.anyimageurl.jpg" [(ngModel)]="image">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Enter Recipe Instruction:</mat-label>
+            <textarea matInput placeholder="Eg.Boil Noodles, Add in pan, Add vegies, Add Sauce,Add Salt" [(ngModel)]="instruction"></textarea>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Add</button>
+    </mat-card>
+</div>

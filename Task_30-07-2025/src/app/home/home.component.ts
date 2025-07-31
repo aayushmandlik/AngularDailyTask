@@ -10,8 +10,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class HomeComponent {
   productForm: FormGroup;
   display: boolean = true;
-  displayl: boolean = true;
-  public search = '';
+  displaylist: boolean = true;
+  search = '';
 
   productList: Products[] = [];
 
@@ -20,9 +20,9 @@ export class HomeComponent {
   constructor(private fb: FormBuilder, private snackbar: MatSnackBar) {
     this.productForm = this.fb.group({
       productname: ['', Validators.required],
-      image: [''],
-      quantity: [''],
-      price: ['']
+      image: ['',Validators.required],
+      quantity: ['',Validators.required],
+      price: ['',Validators.required]
     });
   }
 
@@ -32,7 +32,7 @@ export class HomeComponent {
       pName: formValues.productname,
       pImage: formValues.image,
       pQuantity: formValues.quantity,
-      pPrice: formValues.price
+      pPrice: formValues.price,
     };
 
     this.productList = [...this.productList,newProduct]
@@ -45,8 +45,8 @@ export class HomeComponent {
     this.display = !this.display;
   }
 
-  onclickl() {
-    this.displayl = !this.displayl;
+  onclicklist() {
+    this.displaylist = !this.displaylist;
   }
 }
 
