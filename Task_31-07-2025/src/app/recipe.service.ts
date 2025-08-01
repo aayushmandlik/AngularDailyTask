@@ -29,13 +29,6 @@ export class RecipeService {
     return this.recipes
   }
 
-  updateRecipes(recipe:Recipe){
-    const index = this.recipes.findIndex((r) => r.id==recipe.id)
-    if(index!==-1){
-      this.recipes[index] = recipe
-    }
-  }
-
   deleteRecipes(id:number){
     this.recipes = this.recipes.filter(r => r.id!==id)
   }

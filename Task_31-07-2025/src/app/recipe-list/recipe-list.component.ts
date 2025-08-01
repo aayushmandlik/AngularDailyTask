@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Recipe, RecipeService } from '../recipe.service';
 
 @Component({
@@ -20,18 +20,14 @@ export class RecipeListComponent implements OnInit{
     this.recipeService.addRecipe(newRecipe)
   }
 
-  updateRecipe(recipe: Recipe){
-    this.recipeService.updateRecipes(recipe)
-    this.recipes = this.recipeService.getRecipes();
-  }
-
   deleteRecipe(id:number){
     this.recipeService.deleteRecipes(id)
     this.recipes = this.recipeService.getRecipes();
+    this.filter = this.filter.filter(recipe => recipe.id!==id)
   }
 
   onSearch(event: any){
-    const input = event.target as HTMLInputElement
+    const input = event.target
     this.search = input.value.toLowerCase()
     console.log(this.filter)
     this.filter=this.recipes.filter((item)=>
@@ -39,5 +35,4 @@ export class RecipeListComponent implements OnInit{
     )
     console.log(this.filter)
   }
-
 }
