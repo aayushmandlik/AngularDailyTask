@@ -1,0 +1,74 @@
+<div style="border: 1px solid gray; border-radius: 10px; width: 40%; justify-items: center; padding: 20px; margin: auto; margin-top: 50px;">
+    <form [formGroup]="taskForm" (ngSubmit)="saveTask()" style="display: flex; flex-direction: column;">
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Task Title</mat-label>
+            <input #titleinput matInput placeholder="Eg.Task 1" formControlName="title">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Task Description</mat-label>
+            <input matInput placeholder="Eg.Implenment upi integratioin" formControlName="description">
+        </mat-form-field>
+        <div style="display: flex; gap: 10px;">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Task Assigned By</mat-label>
+                <input matInput placeholder="Aayush" formControlName="assignedby">
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Task Due Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="duedate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Task Status</mat-label>
+            <mat-select name="" id="" formControlName="status">
+                <mat-option value="Pending">Pending</mat-option>
+                <mat-option value="InProgress">InProgress</mat-option>
+                <mat-option value="Completed">Completed</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary">{{isEdit ? 'Update' : 'Add'}} Task</button>
+    </form>
+</div>
+<div style="padding: 20px; border-radius: 50px;">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let element">{{element.title}}</td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let element">{{element.description}}</td>
+        </ng-container>
+        <ng-container matColumnDef="assignedby">
+            <th mat-header-cell *matHeaderCellDef>Assigned By</th>
+            <td mat-cell *matCellDef="let element">{{element.assignedby}}</td>
+        </ng-container>
+        <ng-container matColumnDef="duedate">
+            <th mat-header-cell *matHeaderCellDef>Due Date</th>
+            <td mat-cell *matCellDef="let element">{{element.duedate | date: 'dd-MM-yyy'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">{{element.status}}</td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-button color="primary" (click)="editTask(element)">
+                Edit
+                </button>
+                <button mat-button color="warn" (click)="deleteTask(element.id)">
+                Delete
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+        <tr mat-row *matRowDef="let row;columns: displayColumns"></tr>
+    </table>
+</div>
+
+
