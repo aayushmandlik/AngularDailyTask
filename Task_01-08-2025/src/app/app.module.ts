@@ -16,8 +16,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table'
 import {MatIconModule} from '@angular/material/icon';
 import { TaskListComponent } from './task-list/task-list.component';
-import {MatTabsModule} from '@angular/material/tabs'
-import {MatToolbarModule} from '@angular/material/toolbar'
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatPaginatorModule} from '@angular/material/paginator'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import {MatToolbarModule} from '@angular/material/toolbar'
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatFormFieldModule,MatInputModule,MatButtonModule,MatDatepickerModule,MatSelectModule,MatNativeDateModule,MatTableModule,MatIconModule,MatTabsModule,MatToolbarModule
+    MatFormFieldModule,MatInputModule,MatButtonModule,MatDatepickerModule,MatSelectModule,MatNativeDateModule,MatTableModule,MatIconModule,MatTabsModule,MatToolbarModule,MatPaginatorModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

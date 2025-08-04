@@ -14,8 +14,7 @@ export class TaskComponent implements OnInit, AfterViewInit{
   @ViewChild(TaskListComponent) taskListComp!:TaskListComponent;
   taskForm: FormGroup
   tasks: Task[] = []
-  // dataSource= new MatTableDataSource<Task>()
-  // displayColumns: string[] = ['title','description','assignedby','duedate','status','actions']
+
   currentTask: Task = {
     title: '',
     description: '',
@@ -43,13 +42,6 @@ export class TaskComponent implements OnInit, AfterViewInit{
   loadTasks(){
     this.taskService.getTasks().subscribe((data)=>{
       this.tasks = data
-    //   if (this.taskListComp) {
-    //   this.taskListComp.data = data;
-    //   this.taskListComp.dataSource.data = data;
-    //   this.taskListComp.PendingDataSource.data = data.filter(t => t.status === 'Pending');
-    //   this.taskListComp.InProgressDataSource.data = data.filter(t => t.status === 'InProgress');
-    //   this.taskListComp.CompletedDataSource.data = data.filter(t => t.status === 'Completed');
-    // }
     })
     
   }
@@ -57,7 +49,7 @@ export class TaskComponent implements OnInit, AfterViewInit{
   ngAfterViewInit(): void {
     this.inputElement.nativeElement.focus()
     this.taskListComp.updatefunc = (task:Task) => this.editTask(task)
-    this.taskListComp.onDelete = (id: string) => this.deleteTask(id)
+    this.taskListComp.deletefunc = (id: string) => this.deleteTask(id)
   }
 
   saveTask() {
@@ -97,7 +89,5 @@ export class TaskComponent implements OnInit, AfterViewInit{
     this.taskService.deleteTask(id).subscribe(()=> this.loadTasks())
   }
 
-  // deletefunc = (id:string) => this.deleteTask(id);
-  updatefunc = (task:Task) => this.editTask(task)
 
 }
