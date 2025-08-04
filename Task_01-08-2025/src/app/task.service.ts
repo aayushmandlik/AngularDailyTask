@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 export interface Task{
-  id?:number
+  id?:string
   title: string,
   description: string,
   assignedby: string,
@@ -30,11 +30,7 @@ export class TaskService {
     return this.http.put<Task>(`${this.api}/${task.id}`,task)
   }
 
-  updateStatus(id:number, status:Task['status'] ):Observable<Task>{
-    return this.http.put<Task>(`${this.api}/${id}`,status)
-  }
-
-  deleteTask(id:number):Observable<Task>{
+  deleteTask(id:string):Observable<Task>{
     return this.http.delete<Task>(`${this.api}/${id}`)
   }
 }

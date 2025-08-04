@@ -7,6 +7,22 @@
       "assignedby": "Aayush",
       "duedate": "2025-08-25T18:30:00.000Z",
       "status": "Pending"
+    },
+    {
+      "id": "6b43",
+      "title": "Task 2 ",
+      "description": "Add MatTab for status",
+      "assignedby": "Ajay",
+      "duedate": "2025-08-30T18:30:00.000Z",
+      "status": "InProgress"
+    },
+    {
+      "id": "772b",
+      "title": "Task 3",
+      "description": "Add ViewChildren in task for assignne",
+      "assignedby": "Jay",
+      "duedate": "2025-08-19T18:30:00.000Z",
+      "status": "Completed"
     }
   ]
 }

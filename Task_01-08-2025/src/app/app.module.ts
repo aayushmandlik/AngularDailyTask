@@ -14,12 +14,16 @@ import {MatDatepickerModule} from '@angular/material/datepicker'
 import {MatSelectModule} from '@angular/material/select'
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table'
-import {MatIconModule} from '@angular/material/icon'
+import {MatIconModule} from '@angular/material/icon';
+import { TaskListComponent } from './task-list/task-list.component';
+import {MatTabsModule} from '@angular/material/tabs'
+import {MatToolbarModule} from '@angular/material/toolbar'
 
 @NgModule({
   declarations: [
     AppComponent,
-    TaskComponent
+    TaskComponent,
+    TaskListComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +32,7 @@ import {MatIconModule} from '@angular/material/icon'
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatFormFieldModule,MatInputModule,MatButtonModule,MatDatepickerModule,MatSelectModule,MatNativeDateModule,MatTableModule,MatIconModule
+    MatFormFieldModule,MatInputModule,MatButtonModule,MatDatepickerModule,MatSelectModule,MatNativeDateModule,MatTableModule,MatIconModule,MatTabsModule,MatToolbarModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]
