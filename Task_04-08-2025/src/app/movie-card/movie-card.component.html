@@ -1,0 +1,5 @@
+<mat-card  (click)="goToDetail()">
+  <img matCardImage [src]="movie.image?.medium" alt="">
+  <mat-card-title>{{movie.name}}</mat-card-title>
+  <mat-card-subtitle>Rating: {{movie.rating.average || 'N/A'}}</mat-card-subtitle>
+</mat-card>

@@ -1,0 +1,6 @@
+<mat-toolbar color="primary">
+    Movie Explorer
+</mat-toolbar>
+<div class="card-grid">
+<app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+</div>
