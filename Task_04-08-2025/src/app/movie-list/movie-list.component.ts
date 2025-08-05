@@ -8,12 +8,13 @@ import { MovieService } from '../movie.service';
 })
 export class MovieListComponent implements OnInit {
   movies: any[] = []
+  searchTerm = ''
 constructor(private movieService: MovieService){}
 
 ngOnInit(): void {
   this.movieService.fetchMovies();
   this.movieService.movies$.subscribe((data)=>{
-    this.movies = data.slice(0,15)
+    this.movies = data
   })
 }
 }

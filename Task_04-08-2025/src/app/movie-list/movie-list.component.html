@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
     Movie Explorer
 </mat-toolbar>
+<input [(ngModel)]="searchTerm" placeholder="Search by title" />
 <div class="card-grid">
-<app-movie-card *ngFor="let movie of movies" [movie]="movie"></app-movie-card>
+    <app-movie-card *ngFor="let movie of movies | search:searchTerm" [movie]="movie"></app-movie-card>
 </div>

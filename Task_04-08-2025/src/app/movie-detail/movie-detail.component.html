@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">{{ movie?.name }}</mat-toolbar>
 <div style="display: flex; flex-wrap: wrap; gap: 30px; padding: 20px;" *ngIf="movie">
-    <img [src]="movie.image?.original" alt="Movie poster" style="max-width: 300px; border-radius: 20px;" />
+    <img [appHoverShadow]="'10px 10px 5px 12px lightblue'" [src]="movie.image?.original" alt="Movie poster"
+        style="max-width: 300px; border-radius: 20px;" />
     <div style="max-width: 600px;">
         <h2>{{ movie.name }}</h2>
         <p [innerHTML]="movie.summary"></p>

@@ -16,6 +16,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MovieService } from './movie.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { HoverShadowDirective } from './hover-shadow.directive';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { SearchPipe } from './search.pipe'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,14 +27,17 @@ import { MatIconModule } from '@angular/material/icon';
     LoginComponent,
     MovieListComponent,
     MovieDetailComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    HoverShadowDirective,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatFormFieldModule,MatInputModule,MatCardModule,MatButtonModule,HttpClientModule,MatToolbarModule,MatIconModule
+    FormsModule,
+    MatFormFieldModule,MatInputModule,MatCardModule,MatButtonModule,HttpClientModule,MatToolbarModule,MatIconModule,MatPaginatorModule
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]
