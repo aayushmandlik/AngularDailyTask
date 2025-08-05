@@ -8,9 +8,10 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
-export class TaskListComponent implements OnInit,OnChanges,AfterViewInit {
+export class TaskListComponent implements OnChanges,AfterViewInit {
 
   search: string=''
+  sortdata: string = ''
 
   @Input() data: Task[] = []
   updatefunc!: (task:Task) => void
@@ -33,13 +34,13 @@ export class TaskListComponent implements OnInit,OnChanges,AfterViewInit {
 
   constructor(private taskService: TaskService){}
 
-  ngOnInit(): void {
-    this.sortByTitle()
-  }
+  // ngOnInit(): void {
+  //   this.sortByTitle()
+  // }
 
   ngOnChanges(changes: SimpleChanges): void {
       if(changes['data']){
-        this.sortByTitle()
+        // this.sortByTitle()
         this.dataSource.data = this.data
         this.filterDataSource.data = this.dataSource.data
         this.PendingDataSource.data = this.data.filter(t => t.status === 'Pending')
@@ -54,13 +55,34 @@ export class TaskListComponent implements OnInit,OnChanges,AfterViewInit {
     this.assigneeFilter = assignee
   }
 
-  sortByTitle(){
+  // sortByTitle(){
 
+  //   this.filterDataSource.data = [...this.filterDataSource.data].sort((a,b)=> a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
+  //   this.PendingDataSource.data = [...this.PendingDataSource.data].sort((a,b)=> a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
+  //   this.InProgressDataSource.data = [...this.InProgressDataSource.data].sort((a,b)=> a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
+  //   this.CompletedDataSource.data = [...this.CompletedDataSource.data].sort((a,b)=> a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
+  //   console.log(this.dataSource.data)
+  // }
+
+  onSortChange(event: Event){
+    this.sortdata = (event.target as HTMLSelectElement).value
+    this.applySort()
+  }
+
+  applySort(){
+    if(this.sortdata == "title"){
+      this.sortbyName();
+    }
+    else if(this.sortdata == "assignee"){
+      this.sortbyAssignee();
+    }
+  }
+
+  sortbyName(){
     this.filterDataSource.data = [...this.filterDataSource.data].sort((a,b)=> a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
-    this.PendingDataSource.data = [...this.PendingDataSource.data].sort((a,b)=> a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
-    this.InProgressDataSource.data = [...this.InProgressDataSource.data].sort((a,b)=> a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
-    this.CompletedDataSource.data = [...this.CompletedDataSource.data].sort((a,b)=> a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
-    console.log(this.dataSource.data)
+  }
+  sortbyAssignee(){
+    this.filterDataSource.data = [...this.filterDataSource.data].sort((a,b)=> a.assignedby.toLowerCase().localeCompare(b.assignedby.toLowerCase()))
   }
 
   ngAfterViewInit(): void {
