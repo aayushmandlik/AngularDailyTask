@@ -5,7 +5,7 @@
     <div style="max-width: 600px;">
         <h2>{{ movie.name }}</h2>
         <p [innerHTML]="movie.summary"></p>
-        <p><strong>Genres:</strong> {{ movie.genres.join(', ') }}</p>
+        <p><strong>Genres:</strong> {{ movie.genres }}</p>
         <p><strong>Status:</strong> {{ movie.status }}</p>
     </div>
 </div>

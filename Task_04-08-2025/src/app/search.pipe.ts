@@ -5,9 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(movies:any[], query: string): any[] {
-    if(!query) return movies
-    return movies.filter(movie => movie.name.toLowerCase().includes(query.toLowerCase()))
+  transform(movieees:any[], query: string): any[] {
+    if(!query) return movieees
+    return movieees.filter(movie => movie.name.toLowerCase().includes(query.toLowerCase()))
   }
 
 }
