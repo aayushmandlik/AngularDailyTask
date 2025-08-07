@@ -1,0 +1,8 @@
+{
+  "events": [
+    {"id":1,"title":"abc","date":"Fri Aug 01 2025"},
+    {"id":2,"title":"def","date":"Thu Aug 07 2025"},
+    {"id":3,"title":"asdf","date":"Tue Aug 19 2025"},
+    {"id":4,"title":"asdf","date":"Tue Aug 19 2025"}
+  ]
+}
