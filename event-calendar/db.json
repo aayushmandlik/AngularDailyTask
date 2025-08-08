@@ -1,36 +1,214 @@
 {
   "events": [
-    {"id": 1, "title": "High-Protein Breakfast", "description": "Scrambled eggs, avocado toast, and Greek yogurt.", "date": "Tue Jul 01 2025", "time": "07:30 AM"},
-    {"id": 2, "title": "Mediterranean Lunch", "description": "Grilled chicken with quinoa salad and olive oil dressing.", "date": "Fri Jul 04 2025", "time": "01:00 PM"},
-    {"id": 3, "title": "Light Dinner", "description": "Steamed fish with stir-fried vegetables.", "date": "Mon Jul 07 2025", "time": "07:00 PM"},
-    {"id": 4, "title": "Vegan Power Bowl", "description": "Lentils, roasted sweet potatoes, and spinach.", "date": "Thu Jul 10 2025", "time": "12:30 PM"},
-    {"id": 5, "title": "Protein Smoothie", "description": "Banana, spinach, almond milk, and protein powder.", "date": "Sun Jul 13 2025", "time": "08:00 AM"},
-    {"id": 6, "title": "Wholegrain Pasta Night", "description": "Pasta with tomato-basil sauce and grilled zucchini.", "date": "Wed Jul 16 2025", "time": "07:15 PM"},
-    {"id": 7, "title": "Oatmeal Breakfast", "description": "Oats with berries, chia seeds, and honey.", "date": "Sat Jul 19 2025", "time": "07:45 AM"},
-    {"id": 8, "title": "Asian Stir-Fry Lunch", "description": "Chicken, broccoli, and carrots with soy sauce.", "date": "Tue Jul 22 2025", "time": "12:45 PM"},
-    {"id": 9, "title": "Quinoa Salad Dinner", "description": "Quinoa, chickpeas, cucumber, and tahini dressing.", "date": "Fri Jul 25 2025", "time": "07:30 PM"},
-    {"id": 10, "title": "Avocado Toast Morning", "description": "Wholegrain bread with mashed avocado and boiled eggs.", "date": "Mon Jul 28 2025", "time": "08:15 AM"},
-
-    {"id": 11, "title": "Baked Salmon Lunch", "description": "Salmon fillet with lemon and herbs.", "date": "Fri Aug 01 2025", "time": "01:15 PM"},
-    {"id": 12, "title": "Veggie Soup Dinner", "description": "Pumpkin, carrots, and spinach soup.", "date": "Mon Aug 04 2025", "time": "07:20 PM"},
-    {"id": 13, "title": "Peanut Butter Pancakes", "description": "Wholegrain pancakes with peanut butter drizzle.", "date": "Thu Aug 07 2025", "time": "08:10 AM"},
-    {"id": 14, "title": "Caesar Salad Lunch", "description": "Romaine lettuce, grilled chicken, parmesan, and croutons.", "date": "Sun Aug 10 2025", "time": "01:30 PM"},
-    {"id": 15, "title": "Grilled Veggie Wrap", "description": "Grilled peppers, zucchini, and hummus in a tortilla.", "date": "Wed Aug 13 2025", "time": "06:45 PM"},
-    {"id": 16, "title": "Fruit Bowl Breakfast", "description": "Mixed seasonal fruits with flax seeds.", "date": "Sat Aug 16 2025", "time": "07:25 AM"},
-    {"id": 17, "title": "Turkey Sandwich Lunch", "description": "Wholegrain bread, turkey slices, and lettuce.", "date": "Tue Aug 19 2025", "time": "12:15 PM"},
-    {"id": 18, "title": "Zoodle Dinner", "description": "Zucchini noodles with pesto sauce.", "date": "Fri Aug 22 2025", "time": "07:05 PM"},
-    {"id": 19, "title": "Chia Pudding Morning", "description": "Chia seeds soaked in almond milk with blueberries.", "date": "Mon Aug 25 2025", "time": "08:05 AM"},
-    {"id": 20, "title": "Burrito Bowl Lunch", "description": "Brown rice, beans, grilled chicken, and guacamole.", "date": "Thu Aug 28 2025", "time": "12:35 PM"},
-
-    {"id": 21, "title": "Tomato Soup Dinner", "description": "Creamy tomato soup with garlic bread.", "date": "Mon Sep 01 2025", "time": "07:40 PM"},
-    {"id": 22, "title": "Banana Oat Pancakes", "description": "Banana mashed into oat-based pancakes.", "date": "Thu Sep 04 2025", "time": "08:20 AM"},
-    {"id": 23, "title": "Greek Salad Lunch", "description": "Feta, olives, cucumber, and tomatoes.", "date": "Sun Sep 07 2025", "time": "01:25 PM"},
-    {"id": 24, "title": "Stuffed Bell Peppers", "description": "Bell peppers stuffed with quinoa and vegetables.", "date": "Wed Sep 10 2025", "time": "06:55 PM"},
-    {"id": 25, "title": "Egg Muffins", "description": "Mini baked omelets with spinach and cheese.", "date": "Sat Sep 13 2025", "time": "07:10 AM"},
-    {"id": 26, "title": "Falafel Wrap Lunch", "description": "Falafel, lettuce, and tahini sauce in pita bread.", "date": "Tue Sep 16 2025", "time": "12:25 PM"},
-    {"id": 27, "title": "Grilled Shrimp Skewers", "description": "Shrimp marinated in garlic and lemon.", "date": "Fri Sep 19 2025", "time": "07:10 PM"},
-    {"id": 28, "title": "Granola Yogurt Parfait", "description": "Layers of granola, yogurt, and strawberries.", "date": "Mon Sep 22 2025", "time": "08:15 AM"},
-    {"id": 29, "title": "Baked Potato Lunch", "description": "Potato topped with cottage cheese and chives.", "date": "Thu Sep 25 2025", "time": "12:40 PM"},
-    {"id": 30, "title": "Lentil Curry Dinner", "description": "Spicy lentil curry with brown rice.", "date": "Sun Sep 28 2025", "time": "07:35 PM"}
+    {
+      "id": "1",
+      "title": "High-Protein Breakfast",
+      "description": "Scrambled eggs, avocado toast, and Greek yogurt.",
+      "date": "Tue Jul 01 2025",
+      "time": "07:30 AM"
+    },
+    {
+      "id": "2",
+      "title": "Mediterranean Lunch",
+      "description": "Grilled chicken with quinoa salad and olive oil dressing.",
+      "date": "Fri Jul 04 2025",
+      "time": "01:00 PM"
+    },
+    {
+      "id": "3",
+      "title": "Light Dinner",
+      "description": "Steamed fish with stir-fried vegetables.",
+      "date": "Mon Jul 07 2025",
+      "time": "07:00 PM"
+    },
+    {
+      "id": "4",
+      "title": "Vegan Power Bowl",
+      "description": "Lentils, roasted sweet potatoes, and spinach.",
+      "date": "Thu Jul 10 2025",
+      "time": "12:30 PM"
+    },
+    {
+      "id": "5",
+      "title": "Protein Smoothie",
+      "description": "Banana, spinach, almond milk, and protein powder.",
+      "date": "Sun Jul 13 2025",
+      "time": "08:00 AM"
+    },
+    {
+      "id": "6",
+      "title": "Wholegrain Pasta Night",
+      "description": "Pasta with tomato-basil sauce and grilled zucchini.",
+      "date": "Wed Jul 16 2025",
+      "time": "07:15 PM"
+    },
+    {
+      "id": "7",
+      "title": "Oatmeal Breakfast",
+      "description": "Oats with berries, chia seeds, and honey.",
+      "date": "Sat Jul 19 2025",
+      "time": "07:45 AM"
+    },
+    {
+      "id": "8",
+      "title": "Asian Stir-Fry Lunch",
+      "description": "Chicken, broccoli, and carrots with soy sauce.",
+      "date": "Tue Jul 22 2025",
+      "time": "12:45 PM"
+    },
+    {
+      "id": "9",
+      "title": "Quinoa Salad Dinner",
+      "description": "Quinoa, chickpeas, cucumber, and tahini dressing.",
+      "date": "Fri Jul 25 2025",
+      "time": "07:30 PM"
+    },
+    {
+      "id": "10",
+      "title": "Avocado Toast Morning",
+      "description": "Wholegrain bread with mashed avocado and boiled eggs.",
+      "date": "Mon Jul 28 2025",
+      "time": "08:15 AM"
+    },
+    {
+      "id": "11",
+      "title": "Baked Salmon Lunch",
+      "description": "Salmon fillet with lemon and herbs.",
+      "date": "Fri Aug 01 2025",
+      "time": "01:15 PM"
+    },
+    {
+      "id": "12",
+      "title": "Veggie Soup Dinner",
+      "description": "Pumpkin, carrots, and spinach soup.",
+      "date": "Mon Aug 04 2025",
+      "time": "07:20 PM"
+    },
+    {
+      "id": "13",
+      "title": "Peanut Butter Pancakes",
+      "description": "Wholegrain pancakes with peanut butter drizzle.",
+      "date": "Thu Aug 07 2025",
+      "time": "08:10 AM"
+    },
+    {
+      "id": "14",
+      "title": "Caesar Salad Lunch",
+      "description": "Romaine lettuce, grilled chicken, parmesan, and croutons.",
+      "date": "Sun Aug 10 2025",
+      "time": "01:30 PM"
+    },
+    {
+      "id": "15",
+      "title": "Grilled Veggie Wrap",
+      "description": "Grilled peppers, zucchini, and hummus in a tortilla.",
+      "date": "Wed Aug 13 2025",
+      "time": "06:45 PM"
+    },
+    {
+      "id": "16",
+      "title": "Fruit Bowl Breakfast",
+      "description": "Mixed seasonal fruits with flax seeds.",
+      "date": "Sat Aug 16 2025",
+      "time": "07:25 AM"
+    },
+    {
+      "id": "17",
+      "title": "Turkey Sandwich Lunch",
+      "description": "Wholegrain bread, turkey slices, and lettuce.",
+      "date": "Tue Aug 19 2025",
+      "time": "12:15 PM"
+    },
+    {
+      "id": "18",
+      "title": "Zoodle Dinner",
+      "description": "Zucchini noodles with pesto sauce.",
+      "date": "Fri Aug 22 2025",
+      "time": "07:05 PM"
+    },
+    {
+      "id": "19",
+      "title": "Chia Pudding Morning",
+      "description": "Chia seeds soaked in almond milk with blueberries.",
+      "date": "Mon Aug 25 2025",
+      "time": "08:05 AM"
+    },
+    {
+      "id": "20",
+      "title": "Burrito Bowl Lunch",
+      "description": "Brown rice, beans, grilled chicken, and guacamole.",
+      "date": "Thu Aug 28 2025",
+      "time": "12:35 PM"
+    },
+    {
+      "id": "21",
+      "title": "Tomato Soup Dinner",
+      "description": "Creamy tomato soup with garlic bread.",
+      "date": "Mon Sep 01 2025",
+      "time": "07:40 PM"
+    },
+    {
+      "id": "22",
+      "title": "Banana Oat Pancakes",
+      "description": "Banana mashed into oat-based pancakes.",
+      "date": "Thu Sep 04 2025",
+      "time": "08:20 AM"
+    },
+    {
+      "id": "23",
+      "title": "Greek Salad Lunch",
+      "description": "Feta, olives, cucumber, and tomatoes.",
+      "date": "Sun Sep 07 2025",
+      "time": "01:25 PM"
+    },
+    {
+      "id": "24",
+      "title": "Stuffed Bell Peppers",
+      "description": "Bell peppers stuffed with quinoa and vegetables.",
+      "date": "Wed Sep 10 2025",
+      "time": "06:55 PM"
+    },
+    {
+      "id": "25",
+      "title": "Egg Muffins",
+      "description": "Mini baked omelets with spinach and cheese.",
+      "date": "Sat Sep 13 2025",
+      "time": "07:10 AM"
+    },
+    {
+      "id": "26",
+      "title": "Falafel Wrap Lunch",
+      "description": "Falafel, lettuce, and tahini sauce in pita bread.",
+      "date": "Tue Sep 16 2025",
+      "time": "12:25 PM"
+    },
+    {
+      "id": "27",
+      "title": "Grilled Shrimp Skewers",
+      "description": "Shrimp marinated in garlic and lemon.",
+      "date": "Fri Sep 19 2025",
+      "time": "07:10 PM"
+    },
+    {
+      "id": "28",
+      "title": "Granola Yogurt Parfait",
+      "description": "Layers of granola, yogurt, and strawberries.",
+      "date": "Mon Sep 22 2025",
+      "time": "08:15 AM"
+    },
+    {
+      "id": "29",
+      "title": "Baked Potato Lunch",
+      "description": "Baked Potato Lunch",
+      "date": "Thu Sep 25 2025",
+      "time": "12:40 PM"
+    },
+    {
+      "id": "30",
+      "title": "Lentil Curry Dinner",
+      "description": "Spicy lentil curry with brown rice.",
+      "date": "Sun Sep 28 2025",
+      "time": "07:35 PM"
+    }
   ]
 }

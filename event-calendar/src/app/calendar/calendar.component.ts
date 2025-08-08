@@ -3,6 +3,7 @@ import { EventsService } from '../events.service';
 import { Events } from '../interface/events.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { EventDialogDetailsComponent } from '../event-dialog-details/event-dialog-details.component';
+import { EventDialogComponent } from '../event-dialog/event-dialog.component';
 
 @Component({
   selector: 'app-calendar',
@@ -17,6 +18,7 @@ export class CalendarComponent implements OnInit {
   months = ['January','February','March','April','May','June','July','August','September','October','November','December']
   days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
   weekStartDate:Date = new Date()
+  weekEndDate:Date = new Date()
   calenderMode: 'Month'|'Week' = 'Month'
 
   events: Events[] = []
@@ -71,19 +73,41 @@ export class CalendarComponent implements OnInit {
   }
 
   loadEvents(){
-    this.eventService.getAllEvents().subscribe(data => this.events=data)
-    console.log(this.events)
+    this.eventService.getAllEvents().subscribe(data => {
+      this.events=data
+      console.log(this.events);
+
+    })
   }
 
   openEventDetailsDialog(event: Events){
     this.dialog.open(EventDialogDetailsComponent,{width: '300px',data: event})
   }
 
-  toggleFunction(){
+  toggleFunction1(){
     this.calenderMode = this.calenderMode === "Month" ? "Week" : "Month"
     if(this.calenderMode==="Week")
     {
-      this.weekStartDate = this.getWeekStartDate(new Date());
+      const todayMonth = new Date()
+      if(this.currentMonth===todayMonth.getMonth()){
+        this.weekStartDate = this.getWeekStartDate(new Date());
+        this.generateWeekCalendar()
+      }
+      else{
+        this.weekStartDate = this.getWeekStartDate(new Date(this.currentYear,this.currentMonth,1));
+        this.generateWeekCalendar()
+      }
+    }
+    else{
+      this.generateCalendars()
+    }
+  }
+
+  toggleFunction2(date: Date){
+    this.calenderMode = this.calenderMode === "Month" ? "Week" : "Month"
+    if(this.calenderMode==="Week")
+    {
+      this.weekStartDate = this.getWeekStartDate(new Date(date));
       this.generateWeekCalendar()
     }
     else{
@@ -101,16 +125,18 @@ export class CalendarComponent implements OnInit {
   }
 
   generateWeekCalendar(){
-    const weeks = []
+    const datesinWeek = []
     const start = new Date(this.weekStartDate)
     for(let i=0;i<7;i++){
       const date = new Date(start)
       date.setDate(start.getDate() + i)
       console.log(date);
 
-      weeks.push(date)
+      datesinWeek.push(date)
     }
-    this.calenderDates = weeks
+    this.weekEndDate = new Date(this.currentYear,this.currentMonth,start.getDate()+6)
+    console.log(this.weekEndDate);
+    this.calenderDates = datesinWeek
   }
 
   previousWeek(){
@@ -123,5 +149,9 @@ export class CalendarComponent implements OnInit {
     this.generateWeekCalendar();
   }
 
+
+  openFormDialog(){
+    this.dialog.open(EventDialogComponent,{width:'500px'})
+  }
 
 }
