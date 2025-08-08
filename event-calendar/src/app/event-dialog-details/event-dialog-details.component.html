@@ -1,8 +1,10 @@
 <div mat-dialog-content>
-  <p><strong>ID:</strong>{{data.id}}</p>
-  <p><strong>TITLE:</strong>{{data.title}}</p>
-  <p><strong>DATE:</strong>{{data.date | date }}</p>
+  <p><strong>ID: </strong>{{data.id}}</p>
+  <p><strong>DATE: </strong>{{data.date | date }}</p>
+  <p><strong>TIME: </strong>{{data.time}}</p>
+  <p><strong>TITLE: </strong>{{data.title}}</p>
+  <p><strong>DESCRIPTION: </strong>{{data.description}}</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close >Close</button>
+  <button mat-button color="warn" mat-dialog-close >Close</button>
 </div>

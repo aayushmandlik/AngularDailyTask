@@ -10,7 +10,7 @@ import { EventDialogDetailsComponent } from '../event-dialog-details/event-dialo
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
-  currenDate = new Date().getDate()
+  currenDate = new Date()
   currentYear = new Date().getFullYear()
   currentMonth = new Date().getMonth()
   calenderDates: Date[] = []
@@ -30,16 +30,15 @@ export class CalendarComponent implements OnInit {
 
   generateCalendars(){
     const dates = []
-    const totaldays = 42
     const firstDateofMonth = new Date(this.currentYear,this.currentMonth,1)
     const lastDateofMonth = new Date(this.currentYear,this.currentMonth+1,0)
-    const startDayofWeek = firstDateofMonth.getDay()
+    const startDayofMonth = firstDateofMonth.getDay()
 
     console.log(firstDateofMonth)
     console.log(lastDateofMonth)
-    console.log(startDayofWeek)
+    console.log(startDayofMonth)
 
-    for(let i=startDayofWeek-1;i>=0;i--){
+    for(let i=startDayofMonth-1;i>=0;i--){
       dates.push(new Date(this.currentYear,this.currentMonth,-i))
     }
 
@@ -47,9 +46,8 @@ export class CalendarComponent implements OnInit {
       dates.push(new Date(this.currentYear,this.currentMonth,i))
     }
 
-    while(dates.length < totaldays){
-      const nextDates:any = new Date(this.currentYear,this.currentMonth,dates.length - startDayofWeek + 1)
-      dates.push(nextDates)
+    for(let i=lastDateofMonth.getDay()+1;i<=6;i++){
+      dates.push(new Date(this.currentYear,this.currentMonth+1,i))
     }
 
     this.calenderDates = dates
@@ -73,12 +71,7 @@ export class CalendarComponent implements OnInit {
   }
 
   loadEvents(){
-    this.eventService.getAllEvents().subscribe({
-      next: (response) => {
-        this.events =  response
-      }
-    }
-  )
+    this.eventService.getAllEvents().subscribe(data => this.events=data)
     console.log(this.events)
   }
 
@@ -100,6 +93,9 @@ export class CalendarComponent implements OnInit {
 
   getWeekStartDate(date: Date){
     const start = new Date(date)
+    console.log(date.getDate())
+    console.log(date.getDay());
+
     start.setDate(date.getDate() - date.getDay())
     return start
   }

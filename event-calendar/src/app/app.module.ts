@@ -1,3 +1,4 @@
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -27,7 +28,8 @@ import { EventDialogDetailsComponent } from './event-dialog-details/event-dialog
     HttpClientModule,
     MatCardModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

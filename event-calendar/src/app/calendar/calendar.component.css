@@ -1,9 +1,31 @@
-.week-view{
+.week-view-card{
   height: 500px;
 }
-.month-view{
+.month-view-card{
   height: 150px;
 }
-/* .current-date{
-  background-color: antiquewhite;
-} */
+.current-date{
+  background-color: rgb(88, 88, 213);
+  color: white;
+  width: 15px;
+  padding: 15px;
+  border-radius: 100%;
+}
+.current-month{
+  color: slategray;
+  background-color: aliceblue;
+}
+.previous-month{
+  color: lightgray;
+}
+.next-month{
+  color: lightgray
+}
+.month-grid{
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+}
+.week-grid{
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+}
