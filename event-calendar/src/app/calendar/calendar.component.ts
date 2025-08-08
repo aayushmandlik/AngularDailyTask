@@ -58,15 +58,19 @@ export class CalendarComponent implements OnInit {
   }
 
   previosMonth(){
-    if(this.currentMonth==0)
+    if(this.currentMonth==0){
       this.currentMonth = 11
+      this.currentYear--;
+    }
     else
       this.currentMonth--;
     this.generateCalendars()
   }
   nextMonth(){
-    if(this.currentMonth==11)
+    if(this.currentMonth==11){
       this.currentMonth = 0
+      this.currentYear++;
+    }
     else
       this.currentMonth++;
     this.generateCalendars()
@@ -80,11 +84,12 @@ export class CalendarComponent implements OnInit {
     })
   }
 
-  openEventDetailsDialog(event: Events){
-    this.dialog.open(EventDialogDetailsComponent,{width: '300px',data: event})
+  openEventDetailsDialog(event: Events,e:MouseEvent){
+    e.stopPropagation();
+    this.dialog.open(EventDialogDetailsComponent,{width: '500px',data: event})
   }
 
-  toggleFunction1(){
+  toggleButton(){
     this.calenderMode = this.calenderMode === "Month" ? "Week" : "Month"
     if(this.calenderMode==="Week")
     {
@@ -103,7 +108,7 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  toggleFunction2(date: Date){
+  toggleCard(date: Date){
     this.calenderMode = this.calenderMode === "Month" ? "Week" : "Month"
     if(this.calenderMode==="Week")
     {
@@ -134,7 +139,9 @@ export class CalendarComponent implements OnInit {
 
       datesinWeek.push(date)
     }
-    this.weekEndDate = new Date(this.currentYear,this.currentMonth,start.getDate()+6)
+    const end = new Date(this.weekStartDate)
+    end.setDate(end.getDate()+6)
+    this.weekEndDate = end
     console.log(this.weekEndDate);
     this.calenderDates = datesinWeek
   }
@@ -151,7 +158,14 @@ export class CalendarComponent implements OnInit {
 
 
   openFormDialog(){
-    this.dialog.open(EventDialogComponent,{width:'500px'})
+    const dialogForm = this.dialog.open(EventDialogComponent,{width:'500px'})
+    dialogForm.afterClosed().subscribe((result)=>{
+      this.eventService.addEvent(result).subscribe({
+        next: (response)=>{
+          this.events.push(response)
+        }
+      })
+    })
   }
 
 }

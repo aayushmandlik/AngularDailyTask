@@ -27,9 +27,7 @@ export class EventDialogComponent {
         date: this.eventForm.value.date.toDateString(),
         time: this.eventForm.value.time
       }
-      this.eventService.addEvent(data).subscribe(()=>{
-        this.dialog.close(true)
-      })
+      this.dialog.close(data)
     }
   }
 }
