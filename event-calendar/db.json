@@ -211,20 +211,32 @@
       "time": "07:35 PM"
     },
     {
-      "id": "4d6a",
       "title": "morning breakfast",
-      "description": "milk,bread",
+      "description": "milk,bread,fruits",
       "date": "Tue Aug 19 2025",
-      "time": "7:45 AM"
+      "time": "7:45 AM",
+      "id": "4d6a"
     },
     {
-      "id": "7563"
+      "id": "4e55",
+      "title": "After Brush",
+      "description": "Dry Fruits",
+      "date": "Fri Aug 22 2025",
+      "time": "7:00 AM"
     },
     {
-      "id": "ed1b"
+      "title": "Lunch",
+      "description": "Dal Rice, Salad",
+      "date": "Fri Aug 22 2025",
+      "time": "1:00 PM",
+      "id": "ef10"
     },
     {
-      "id": "596a"
+      "id": "fa33",
+      "title": "Diet Shake",
+      "description": "Add peanuts and dry fruits",
+      "date": "Sat Aug 23 2025",
+      "time": "5:00 PM"
     }
   ]
 }

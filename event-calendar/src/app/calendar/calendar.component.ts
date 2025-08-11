@@ -4,6 +4,7 @@ import { Events } from '../interface/events.interface';
 import { MatDialog } from '@angular/material/dialog';
 import { EventDialogDetailsComponent } from '../event-dialog-details/event-dialog-details.component';
 import { EventDialogComponent } from '../event-dialog/event-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-calendar',
@@ -23,13 +24,16 @@ export class CalendarComponent implements OnInit {
 
   events: Events[] = []
 
-  constructor(private eventService: EventsService, private dialog: MatDialog){}
+  constructor(private eventService: EventsService, private dialog: MatDialog, private snackBar: MatSnackBar){}
 
   ngOnInit(): void {
     this.generateCalendars();
     this.loadEvents();
   }
 
+  /** Generate dates of calendar in month view containing trailing and leading dates of previous and next month to fill the calendar grid
+   * @returns {void}
+   */
   generateCalendars(){
     const dates = []
     const firstDateofMonth = new Date(this.currentYear,this.currentMonth,1)
@@ -48,7 +52,7 @@ export class CalendarComponent implements OnInit {
       dates.push(new Date(this.currentYear,this.currentMonth,i))
     }
 
-    for(let i=lastDateofMonth.getDay()+1;i<=6;i++){
+    for(let i=1;i<=6-lastDateofMonth.getDay();i++){
       dates.push(new Date(this.currentYear,this.currentMonth+1,i))
     }
 
@@ -56,7 +60,9 @@ export class CalendarComponent implements OnInit {
     console.log(this.calenderDates)
 
   }
-
+  /** Navigate to previous month and generate the calendar of that month
+   * @returns {void}
+   */
   previosMonth(){
     if(this.currentMonth==0){
       this.currentMonth = 11
@@ -66,6 +72,10 @@ export class CalendarComponent implements OnInit {
       this.currentMonth--;
     this.generateCalendars()
   }
+
+  /** Navigate to next month and generate the calendar of that month
+   * @returns {void}
+   */
   nextMonth(){
     if(this.currentMonth==11){
       this.currentMonth = 0
@@ -76,6 +86,7 @@ export class CalendarComponent implements OnInit {
     this.generateCalendars()
   }
 
+  /**Load all events from db.json on the date of calendar for which it was created */
   loadEvents(){
     this.eventService.getAllEvents().subscribe(data => {
       this.events=data
@@ -84,11 +95,29 @@ export class CalendarComponent implements OnInit {
     })
   }
 
+  /** Open dialog to show the event details of that particular date
+   * @param {Events} event The specific event object in array to display
+   * @param {MouseEvent} e Mouse event to stop propagation
+   * @returns {void}
+   */
+
   openEventDetailsDialog(event: Events,e:MouseEvent){
     e.stopPropagation();
-    this.dialog.open(EventDialogDetailsComponent,{width: '500px',data: event})
+    const updateForm = this.dialog.open(EventDialogComponent,{width: '500px',data: event})
+    updateForm.afterClosed().subscribe((result)=>{
+      this.eventService.updateEvent(result).subscribe({
+        next : (response) => {
+          const index = this.events.findIndex(e => e.id === response.id)
+          this.events[index] = response
+          this.snackBar.open(`Event Updated Successfully on ${response.date} at ${response.time}`,'Close',{duration: 5000})
+        }
+      })
+    })
   }
 
+  /** Switch the view between Month view and Week View
+   * @returns {void}
+   */
   toggleButton(){
     this.calenderMode = this.calenderMode === "Month" ? "Week" : "Month"
     if(this.calenderMode==="Week")
@@ -108,6 +137,11 @@ export class CalendarComponent implements OnInit {
     }
   }
 
+  /**
+   *
+   * @param {Date} date Switch to Week view of the selected date week
+   * @returns {void}
+   */
   toggleCard(date: Date){
     this.calenderMode = this.calenderMode === "Month" ? "Week" : "Month"
     if(this.calenderMode==="Week")
@@ -120,6 +154,11 @@ export class CalendarComponent implements OnInit {
     }
   }
 
+  /**
+   *
+   * @param date
+   * @returns {Date} The start date of the selected week dates
+   */
   getWeekStartDate(date: Date){
     const start = new Date(date)
     console.log(date.getDate())
@@ -129,6 +168,10 @@ export class CalendarComponent implements OnInit {
     return start
   }
 
+  /**
+   * Generate Calendar dates in week view
+   * @returns {void}
+   */
   generateWeekCalendar(){
     const datesinWeek = []
     const start = new Date(this.weekStartDate)
@@ -146,23 +189,36 @@ export class CalendarComponent implements OnInit {
     this.calenderDates = datesinWeek
   }
 
+  /**
+   * Navigates to previous week and generate calendar of that week
+   * @returns {void}
+   */
   previousWeek(){
     this.weekStartDate.setDate(this.weekStartDate.getDate() - 7)
     this.generateWeekCalendar();
   }
 
+  /**
+   * Navigates to next week and generates calendar of that week
+   * @returns {void}
+   */
   nextWeek(){
     this.weekStartDate.setDate(this.weekStartDate.getDate() + 7)
     this.generateWeekCalendar();
   }
 
-
+  /**
+   * Opens a dialog containing form to add event on a specific date in calendar
+   * @returns {void}
+   */
   openFormDialog(){
     const dialogForm = this.dialog.open(EventDialogComponent,{width:'500px'})
     dialogForm.afterClosed().subscribe((result)=>{
       this.eventService.addEvent(result).subscribe({
         next: (response)=>{
           this.events.push(response)
+          if(response.date!=undefined)
+          this.snackBar.open(`Event Added Successfully on ${response.date} at ${response.time}`,'Close',{duration: 5000})
         }
       })
     })

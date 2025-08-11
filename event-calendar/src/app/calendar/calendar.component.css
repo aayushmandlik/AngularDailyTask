@@ -1,31 +1,53 @@
-.week-view-card{
-  height: 500px;
+/* Hover effects */
+.add-event-btn:hover {
+  background: #019374;
 }
-.month-view-card{
-  height: 150px;
+
+.nav-btn:hover {
+  background: #b2bec3;
 }
-.current-date{
-  background-color: rgb(88, 88, 213);
-  color: white;
-  width: 15px;
-  padding: 15px;
-  border-radius: 100%;
+
+.toggle-view-btn:hover {
+  background: #0765b3;
 }
-.current-month{
-  color: slategray;
-  background-color: aliceblue;
+
+.date-card:hover {
+  transform: scale(1.02);
+  background: #f9f9f9;
 }
-.previous-month{
-  color: lightgray;
+
+/* ngClass styles */
+.month-view-card-height {
+  min-height: 120px;
 }
-.next-month{
-  color: lightgray
+
+.week-view-card-height {
+  min-height: 500px;
 }
-.month-grid{
+
+.today {
+  border: 2px solid #0984e3;
+}
+
+.previous-month,
+.next-month {
+  color: #b2bec3;
+}
+
+.month-grid {
   display: grid;
-  grid-template-columns: repeat(7,1fr);
+  grid-template-columns: repeat(7, 1fr);
 }
-.week-grid{
+
+.week-grid {
   display: grid;
-  grid-template-columns: repeat(7,1fr);
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.month-event {
+  background: #74b9ff;
+}
+
+.week-event {
+  background: #55efc4;
 }

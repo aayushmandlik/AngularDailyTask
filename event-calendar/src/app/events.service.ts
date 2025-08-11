@@ -7,7 +7,7 @@ import { Events } from './interface/events.interface';
   providedIn: 'root'
 })
 export class EventsService {
-  private api = 'http://localhost:3000/events'
+  private api = 'http://localhost:8000/events'
   constructor(private http: HttpClient) { }
 
   getAllEvents():Observable<Events[]>{
@@ -20,5 +20,9 @@ export class EventsService {
 
   updateEvent(event: Events):Observable<Events>{
     return this.http.put<Events>(`${this.api}/${event.id}`,event)
+  }
+
+  deleteEvent(event_id?:number):Observable<Events>{
+    return this.http.delete<Events>(`${this.api}/${event_id}`)
   }
 }

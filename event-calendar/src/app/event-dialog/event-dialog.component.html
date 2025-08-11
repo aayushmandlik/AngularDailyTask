@@ -1,5 +1,5 @@
 <div style="padding: 20px;">
-  <h2 style="font-size: xx-large; font-weight: 900; color: slategray; text-align: center;" mat-didalog-title>Add Meal Event</h2>
+  <h2 style="font-size: xx-large; font-weight: 900; color: slategray; text-align: center;" mat-didalog-title>{{isEdit?"Update Meal Event":"Add Meal Event"}}</h2>
   <mat-dialog-content [formGroup]="eventForm">
     <div style="display: flex; flex-direction: column;">
       <mat-form-field class="full-width" appearance="outline">
@@ -23,9 +23,14 @@
       </mat-form-field>
     </div>
   </mat-dialog-content>
-  <mat-dialog-actions>
-    <button mat-button color="warn" mat-dialog-close>Cancel</button>
-    <button mat-raised-button color="primary" (click)="onSubmit()">Add</button>
+  <mat-dialog-actions style="display: flex; justify-content: space-between;">
+    <div>
+      <button mat-button color="warn" mat-dialog-close>Cancel</button>
+      <button mat-raised-button color="primary" (click)="onSubmit()">{{isEdit?"Update":"Add"}}</button>
+    </div>
+    <div *ngIf="isEdit===true">
+      <button mat-raised-button color="warn" (click)="onDelete(data.id)">Delete</button>
+    </div>
   </mat-dialog-actions>
 
 </div>
