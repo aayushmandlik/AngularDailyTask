@@ -182,10 +182,12 @@ export class CalendarComponent implements OnInit {
 
       datesinWeek.push(date)
     }
+
     const end = new Date(this.weekStartDate)
     end.setDate(end.getDate()+6)
     this.weekEndDate = end
     console.log(this.weekEndDate);
+
     this.calenderDates = datesinWeek
   }
 
@@ -222,6 +224,36 @@ export class CalendarComponent implements OnInit {
         }
       })
     })
+  }
+
+  openEventList(){
+    this.dialog.open(EventDialogDetailsComponent,{width:'1800px',data: this.events})
+  }
+
+  getUpcomingEvents(){
+    const now = new Date();
+    const upcomingEvents = this.events.filter((event)=>new Date(event.date)>now)
+    upcomingEvents.sort((a,b)=> new Date(a.date).getTime() - new Date(b.date).getTime())
+    // console.log(upcomingEvents);
+    return upcomingEvents[0];
+  }
+
+  getTodaysEvent(){
+    const now = new Date();
+    const todaysEvent = this.events.filter((event)=>new Date(event.date).toDateString()==now.toDateString())
+    console.log(todaysEvent)
+    return todaysEvent
+  }
+
+  goToToday(){
+    if(this.calenderMode==="Month"){
+      this.currentMonth = new Date().getMonth()
+      this.generateCalendars()
+    }
+    else if(this.calenderMode==='Week'){
+      this.currenDate = new Date()
+      this.generateWeekCalendar
+    }
   }
 
 }

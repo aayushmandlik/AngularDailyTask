@@ -1,3 +1,4 @@
+import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
@@ -18,6 +19,7 @@ import { EventDialogComponent } from './event-dialog/event-dialog.component';
 import { EventDialogDetailsComponent } from './event-dialog-details/event-dialog-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule} from '@angular/material/radio'
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatRadioModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

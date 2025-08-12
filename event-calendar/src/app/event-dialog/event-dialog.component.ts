@@ -48,6 +48,7 @@ export class EventDialogComponent implements OnInit {
   onDelete(id?:number){
     if(confirm('Are you Sure ?')){
       this.eventService.deleteEvent(id).subscribe(()=>this.dialog.close(true))
+      window.location.reload()
     }
   }
 }

@@ -51,3 +51,19 @@
 .week-event {
   background: #55efc4;
 }
+.hoverinfo{
+  width: 100px;
+  height: 100px;
+}
+.hover-info{
+  display: none;
+  background-color: lightblue;
+  padding: 10px;
+  border: 1px solid blue;
+  position: absolute;
+  z-index: 10;
+}
+
+.main-content:hover .hover-info{
+  display: block;
+}

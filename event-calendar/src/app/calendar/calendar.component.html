@@ -2,11 +2,16 @@
   style="padding:20px; border:1px solid #e5e5e5; border-radius:16px; background:white; box-shadow:0 4px 12px rgba(0,0,0,0.05);">
   <!-- Header -->
   <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px;">
-    <button mat-button class="add-event-btn" (click)="openFormDialog()"
-      style="display:flex; align-items:center; background:#00b894; color:white; border-radius:12px; padding:12px 18px; gap:8px; font-weight:500;">
-      <mat-icon>add</mat-icon>
-      <span>Add Meal Event</span>
-    </button>
+    <div style="display: flex; gap: 20px;">
+      <button mat-button class="add-event-btn" (click)="openFormDialog()"
+        style="display:flex; align-items:center; background:#00b894; color:white; border-radius:12px; padding:12px 18px; gap:8px; font-weight:500;">
+        <mat-icon>add</mat-icon>
+        <span>Add Meal Event</span>
+      </button>
+      <button mat-button class="toggle-view-btn" (click)="openEventList()"
+      style="background:#0984e3; color:white; border-radius:12px; padding:12px 18px; font-weight:500;">View Events List
+      </button>
+    </div>
 
     <div *ngIf="calenderMode==='Week'" style="display:flex; align-items:center; gap:10px;">
       <mat-icon (click)="previousWeek()" class="nav-btn"
@@ -24,11 +29,26 @@
         style="background:#dfe6e9; padding:6px; border-radius:8px; cursor:pointer;">arrow_forward_ios</mat-icon>
     </div>
 
-    <button mat-button class="toggle-view-btn" (click)="toggleButton()"
+    <div style="display: flex; gap: 10px;">
+      <!-- <button mat-button class="toggle-view-btn" (click)="getTodaysEvent()"
+      style="background:#0984e3; color:white; border-radius:12px; padding:12px 18px; font-weight:500;">View Events List
+      </button> -->
+      <!-- <button mat-button class="toggle-view-btn" (click)="toggleButton()"
       style="background:#0984e3; color:white; border-radius:12px; padding:12px 18px; font-weight:500;">
       {{calenderMode === 'Month' ? 'Week View' : 'Month View'}}
-    </button>
+      </button> -->
+      <button mat-button class="toggle-view-btn" (click)="goToToday()"
+      style="background:#0984e3; color:white; border-radius:12px; padding:12px 18px; font-weight:500;">Today
+      </button>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1" (click)="toggleButton()" checked="true">Month View</mat-radio-button>
+        <mat-radio-button value="2" (click)="toggleButton()">Week View</mat-radio-button>
+      </mat-radio-group>
+    </div>
   </div>
+
+  <marquee behavior="" direction="" style="margin-top: 20px;" *ngIf="getTodaysEvent().length>0">Todays Meal Event: <span *ngFor="let evnt of getTodaysEvent()">{{evnt.title}}-({{evnt.description}}) at {{evnt.time}}, &nbsp;</span></marquee>
+  <marquee behavior="" direction="">Upcoming Meal Event: {{getUpcomingEvents().title}}({{getUpcomingEvents().description}}) on {{getUpcomingEvents().date}} at {{getUpcomingEvents().time}}</marquee>
 
   <!-- Days of week -->
   <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-top:20px;">
@@ -58,7 +78,11 @@
         <div *ngIf="event.date === date.toDateString()"
           [ngClass]="{'month-event': calenderMode==='Month', 'week-event': calenderMode==='Week'}"
           style="color:white; border-radius:8px; padding:0px 6px; font-size:12px; margin-top:4px; display:inline-block;">
-          <span *ngIf="calenderMode==='Month'">Event:{{event.id}}</span>
+          <span *ngIf="calenderMode==='Month'" class="main-content">Event:{{event.time}}
+            <span class="hover-info">
+              <p>{{event.description}}</p>
+            </span>
+          </span>
           <span *ngIf="calenderMode==='Week'">{{event.title}}<br><small>{{event.time}}</small></span>
         </div>
       </div>
