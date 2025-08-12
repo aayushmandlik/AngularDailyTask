@@ -54,3 +54,7 @@ async def update_event(event_id:str, event_data:EventUpdate):
 @router.delete("/{event_id}")
 async def delete_event(event_id:str):
     return await es.delete_event_service(event_id)
+
+@router.post("/multiple",response_model=List[EventResponse])
+async def create_multiple_events(events: List[EventCreate]):
+    return await es.create_multiple_events_service(events)

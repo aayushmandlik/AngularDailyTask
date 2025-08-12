@@ -1,6 +1,7 @@
 from repositories import event_repository as er
 from schemas.event_schema import EventCreate,EventUpdate
 from fastapi import HTTPException
+from typing import List
 async def create_event_service(event:EventCreate):
     event_data = event.dict()
     return await er.create_event(event_data)
@@ -20,3 +21,7 @@ async def delete_event_service(event_id:str):
         raise HTTPException(status_code=404, detail="Event Not Found")
     await er.delete_event(event_id)
     return {"message":"Event Deleted Successfully"}
+
+async def create_multiple_events_service(events: List[EventCreate]):
+    event_data = [event.dict() for event in events]
+    return await er.create_multiple_events(event_data)

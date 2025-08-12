@@ -1,6 +1,6 @@
 from databases.event_database import events_collection
 from bson import ObjectId
-
+from typing import List
 async def create_event(event: dict):
     result = await events_collection.insert_one(event)
     await events_collection.update_one({"_id":result.inserted_id},{"$set":{"id":str(result.inserted_id)}})
@@ -18,3 +18,9 @@ async def delete_event(event_id: str):
 
 async def get_event_by_id(event_id:str):
     return await events_collection.find_one({"_id":ObjectId(event_id)})
+
+async def create_multiple_events(event: List[dict]):
+    result = await events_collection.insert_many(event)
+    for insertedid in result.inserted_ids:
+        await events_collection.update_one({"_id":insertedid},{"$set":{"id":str(insertedid)}})
+    return await events_collection.find({"_id": {"$in": result.inserted_ids}}).to_list(length=len(result.inserted_ids))
