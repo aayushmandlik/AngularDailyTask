@@ -49,7 +49,7 @@
 
   <marquee behavior="" direction="" style="margin-top: 20px;" *ngIf="getTodaysEvent().length>0">Todays Meal Event: <span *ngFor="let evnt of getTodaysEvent()">{{evnt.title}}-({{evnt.description}}) at {{evnt.time}}, &nbsp;</span></marquee>
   <marquee behavior="" direction="">Upcoming Meal Event: {{getUpcomingEvents().title}}({{getUpcomingEvents().description}}) on {{getUpcomingEvents().date}} at {{getUpcomingEvents().time}}</marquee>
-
+  <input type="text" placeholder="Search for Event Title for this month" (input)="onSearch($event)" style="width: 20%; padding: 10px; border-radius: 10px;">
   <!-- Days of week -->
   <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-top:20px;">
     <div *ngFor="let day of days"
@@ -70,11 +70,11 @@
         'today': date.toDateString() === currenDate.toDateString()
       }"
       style="padding:8px; border-radius:12px; cursor:pointer; display:flex; flex-direction:column; align-items:flex-start; background:white; box-shadow:0 2px 6px rgba(0,0,0,0.05);"
-      (click)="toggleCard(date)">
+      (click)="openFormDialog()">
       <div style="font-weight:600; margin-bottom:5px;">{{date.getDate()}}</div>
 
       <!-- Events -->
-      <div *ngFor="let event of events" (click)="openEventDetailsDialog(event, $event)">
+      <div *ngFor="let event of filteredEvents" (click)="openEventDetailsDialog(event, $event)">
         <div *ngIf="event.date === date.toDateString()"
           [ngClass]="{'month-event': calenderMode==='Month', 'week-event': calenderMode==='Week'}"
           style="color:white; border-radius:8px; padding:0px 6px; font-size:12px; margin-top:4px; display:inline-block;">

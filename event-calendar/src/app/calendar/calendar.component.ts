@@ -90,6 +90,7 @@ export class CalendarComponent implements OnInit {
   loadEvents(){
     this.eventService.getAllEvents().subscribe(data => {
       this.events=data
+      this.filteredEvents=data
       console.log(this.events);
 
     })
@@ -226,10 +227,18 @@ export class CalendarComponent implements OnInit {
     })
   }
 
+  /**
+   * Opens a dialog containing list of events over the year
+   * @returns {void}
+   */
   openEventList(){
     this.dialog.open(EventDialogDetailsComponent,{width:'1800px',data: this.events})
   }
 
+  /**
+   * It returns the array of events scheduled for future date
+   * @returns {Array}
+   */
   getUpcomingEvents(){
     const now = new Date();
     const upcomingEvents = this.events.filter((event)=>new Date(event.date)>now)
@@ -238,6 +247,10 @@ export class CalendarComponent implements OnInit {
     return upcomingEvents[0];
   }
 
+  /**
+   * It returns the array of events scheduled for today
+   * @returns {Array}
+   */
   getTodaysEvent(){
     const now = new Date();
     const todaysEvent = this.events.filter((event)=>new Date(event.date).toDateString()==now.toDateString())
@@ -245,6 +258,10 @@ export class CalendarComponent implements OnInit {
     return todaysEvent
   }
 
+  /**
+   * Displays the current month calendar when on another month calendar
+   * @returns {void}
+   */
   goToToday(){
     if(this.calenderMode==="Month"){
       this.currentMonth = new Date().getMonth()
@@ -252,8 +269,20 @@ export class CalendarComponent implements OnInit {
     }
     else if(this.calenderMode==='Week'){
       this.currenDate = new Date()
-      this.generateWeekCalendar
+      this.weekStartDate = this.getWeekStartDate(new Date())
+      this.generateWeekCalendar()
     }
+  }
+
+  searchTerm: string = ""
+  filteredEvents: Events[] = this.events
+  onSearch(event: Event){
+    const input = event.target as HTMLInputElement
+    this.searchTerm = input.value.toLowerCase()
+    this.filteredEvents = this.events.filter((event)=>{
+      return event.title.toLowerCase().includes(this.searchTerm)
+    })
+    console.log(this.filteredEvents)
   }
 
 }

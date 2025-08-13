@@ -51,10 +51,7 @@
 .week-event {
   background: #55efc4;
 }
-.hoverinfo{
-  width: 100px;
-  height: 100px;
-}
+
 .hover-info{
   display: none;
   background-color: lightblue;
