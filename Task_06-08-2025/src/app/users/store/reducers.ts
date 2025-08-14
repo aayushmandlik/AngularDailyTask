@@ -5,7 +5,7 @@ import { State } from "src/app/interface/userState.interface";
 
 
 export const initialState : State = {
-  users: [],
+  users: {users: [], total: 0, skip: 0, limit: 0},
   loading: false,
   error: null
 }

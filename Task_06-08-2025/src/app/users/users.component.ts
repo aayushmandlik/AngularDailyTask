@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Users } from '../interface/users.interface';
+import { map, Observable } from 'rxjs';
+import { Users, UsersResponse } from '../interface/users.interface';
 import { selectedUsers, selectedUsersFailure, selectedUsersLoading } from './store/selector';
 import * as UsersAction from './store/actions'
 import { AppStateInterface } from '../type/appState.interface';
@@ -28,7 +28,7 @@ export class UsersComponent implements OnInit{
   ]
 
   constructor(private store: Store<AppStateInterface>){
-    this.users$ = this.store.pipe(select(selectedUsers))
+    this.users$ = this.store.pipe(select(selectedUsers),map((response: UsersResponse) => response.users ))
     this.loading$ = this.store.pipe(select(selectedUsersLoading))
     this.error$ = this.store.pipe(select(selectedUsersFailure))
   }

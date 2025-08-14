@@ -1,7 +1,7 @@
-import { Users } from "./users.interface";
+import { Users, UsersResponse } from "./users.interface";
 
 export interface State {
-  users: Users[],
+  users: UsersResponse,
   loading: boolean,
   error: string | null
 }

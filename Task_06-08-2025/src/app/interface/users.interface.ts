@@ -9,3 +9,10 @@ export interface Users{
     phone: string;
 
 }
+
+export interface UsersResponse{
+  users: Users[]
+  total: number
+  skip: number
+  limit: number
+}
