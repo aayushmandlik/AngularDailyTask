@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 import { Users, UsersResponse } from '../interface/users.interface';
-import { selectedUsers, selectedUsersFailure, selectedUsersLoading } from './store/selector';
-import * as UsersAction from './store/actions'
+import { selectedUsers, selectedUsersFailure, selectedUsersLoading } from '../store/selector';
+import * as UsersAction from '../store/actions'
 import { AppStateInterface } from '../type/appState.interface';
 @Component({
   selector: 'app-users',

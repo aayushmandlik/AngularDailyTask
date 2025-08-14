@@ -1,4 +1,4 @@
-import { usersReducer } from './users/store/reducers';
+import { productsReducer, usersReducer } from './store/reducers';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -13,14 +13,16 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { UsersEffect } from './users/store/effects';
+import { UsersEffect } from './store/effects';
 import { UsersService } from './users.service';
 import { environment } from './environments/environment';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,8 @@ import { environment } from './environments/environment';
     }),
     SharedModule,
     StoreModule.forFeature('users',usersReducer),
+    StoreModule.forFeature('products',productsReducer),
+    EffectsModule.forFeature([UsersEffect]),
     EffectsModule.forFeature([UsersEffect])
   ],
   providers: [HttpClient,UsersService],
